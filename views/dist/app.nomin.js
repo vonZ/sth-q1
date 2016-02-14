@@ -1,4 +1,4 @@
-/*! angular-grunt-foundation 2016-02-12 */
+/*! angular-grunt-foundation 2016-02-14 */
 var app = angular.module("sthlmHar", [ "ui.router" ]);
 
 app.controller("aboutUsPageController", [ "$scope", "$http", function(a, b) {
