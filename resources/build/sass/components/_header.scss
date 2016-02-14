@@ -3,7 +3,9 @@
 }
 
 header {
-
+    display: inline-block;
+    width: 100%;
+    
 	& .wrapper {
 	    padding: 20px 40px 10px 15px;
 	}
