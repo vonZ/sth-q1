@@ -1,0 +1,23 @@
+{
+  "name": "angular-grunt-foundation",
+  "version": "0.1.0",
+  "main": "../dist/app.min.js",
+  "description": "Angular, sass, jQuery resource foundation",
+  "dependencies": {
+    "angular": "*",
+    "jquery": "*",
+    "sass-bootstrap": "*",
+    "angular-sanitize": "*",
+    "lodash": "*",
+    "modernizr": "*",
+    "angular-ui-router": "*",
+    "angular-route": "*",
+    "angular-resource": "*",
+    "angular-animate": "*"
+  },
+  "ignore": [
+    "node_modules",
+    "components",
+    "lib"
+  ]
+}

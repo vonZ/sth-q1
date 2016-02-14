@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Hår test</title>
+
+	<!--STYLES-->
+	<link rel="stylesheet" type="text/css" href="dist/dependencies.min.css">
+	<link rel="stylesheet" type="text/css" href="dist/app.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300italic,300,600' rel='stylesheet' type='text/css'>
+
+</head>
+<body ng-app="sthlmHar" ng-controller="mainController">
+	<header>
+		<div id="NavigationWrapper"></div>
+		<div class="container">
+			<span class="logo"><a href="">Stckhlm hår</a></span>
+			<!-- NAVIGATION -->
+		    <ul class="navigation">
+		        <li><a ui-sref="home">Hem</a></li>
+		        <li><a ui-sref="about">Om oss</a></li>
+		        <li><a ui-sref="findUs">Hitta till oss</a></li>
+		        <li><a ui-sref="prices">Priser</a></li>
+		    </ul>
+	    </div>
+	</header>
+
+ 	<div ui-view></div>
+	 
+	<!--SCRIPTS-->
+	<script src="dist/dependencies.min.js"></script>
+	<script src="dist/app.nomin.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+
+</body>
+</html>

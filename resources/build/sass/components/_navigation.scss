@@ -1,0 +1,62 @@
+#NavigationWrapper {
+	background: #696158;
+    position: absolute;
+    width: 100%;
+    height: 61px;
+    opacity: 0.6;
+    z-index: -1;
+}
+
+.logo {
+	float: left;
+    margin: 10px 0px;
+    padding: 10px 40px 10px 15px;
+    text-transform: uppercase;
+
+    & a {
+    	color: black;
+    }
+}
+
+.navigation {
+	margin: 10px 0px;
+    padding: 10px 40px 10px 15px;
+    display: inline-block;
+
+	& li {
+		float: left;
+	    padding-right: 40px;
+        text-transform: uppercase;
+
+		& a {
+			color: black;
+
+			&:hover {
+				background: none;
+			}
+		}
+	}
+}
+
+
+
+
+.imgOverflow {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    z-index: -1;
+    max-height: 820px;
+    overflow: hidden;
+
+    & video {
+    	width: 100%; 
+    	min-width: 1450px;
+		  -webkit-filter: blur(3px);
+		  -moz-filter: blur(3px);
+		  -o-filter: blur(3px);
+		  -ms-filter: blur(3px);
+		  filter: blur(3px);
+    }
+}

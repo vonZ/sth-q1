@@ -1,0 +1,85 @@
+
+<div class="text-center" id="StartPageHeaderContent">
+    <div class="imgOverflow">
+    	<video autoplay muted loop id="bgvid" poster="">
+            <source src="img/video.mp4" type="video/mp4" />
+        </video>
+    </div>
+
+    <div class="welcomeContent">
+        <h1 class="animated fadeInDown"> Stockholm hår</h1>
+        <p>Kungsholmens frisör</p>
+      	<button id="StartPageTeaser">
+    		Button
+    	</button>
+    </div>
+</div>
+
+<section>
+	<div class="text-center fa-2x">
+		<i class="fa fa-chevron-down"></i>
+
+		<div class="container">
+			<div class="text-center content">
+				<p>Omvårdande experthjälp vid Fridhemsplan.
+					Kunskap blandas med ren passion för yrket på frisörsalongen Stockholm Hår vid Fridhemsplan.
+					Här får du hjälp med allt från ögonbrynen till festuppsättningen
+					- inte minst får du experthjälp med klipp och färg. Känn dig hemma i goda, omvårdande händer och kom härifrån lika fixad som utomordentligt nöjd.
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section>
+	<div class="text-center fa-2x">
+
+		<div class="container">
+			<div class="text-center">
+
+				<h3>Vi säljer</h3>
+				<div class="wrapper">
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="pushBox" id="Wella">
+							<a href="#">
+								<img src="img/Wella_logo_black.png" class="img-responsive">
+							</a>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="pushBox">
+							<a href="#">
+								<img src="img/americancrew.png" class="img-responsive">
+							</a>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="pushBox" id="KM">
+							<a href="#">
+								<img src="img/km-logo.jpg" class="img-responsive">
+							</a>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="pushBox" id="LP">
+							<a href="#">
+								<img src="img/logo_living_proof.png" class="img-responsive">
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section>
+    <ul>
+		<li ng-repeat="p in pics">
+            <a href="{{p.link}}" target="_blank"><img ng-src="{{p.images.low_resolution.url}}" /></a>
+        </li>
+    </ul>
+</section>

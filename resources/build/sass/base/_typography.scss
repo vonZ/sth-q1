@@ -1,0 +1,33 @@
+h1, h2, h3, p, span, ul {
+    font-family: 'Open Sans', sans-serif;
+    color: #646464; 
+}
+
+h2 {
+    margin-bottom:0;
+    margin-top: 0;
+    /*font-family: "Diavlo_BOOK_II_37"; */
+}
+
+span, p, a {
+	font-size: 15px; 
+}
+
+p {
+    line-height: 30px;
+}
+
+i {
+	color: #646464; 
+}
+
+a {
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+ul {
+	list-style: none;
+}
