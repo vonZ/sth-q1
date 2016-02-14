@@ -58,10 +58,13 @@
     & video {
     	width: 100%; 
     	min-width: 1450px;
-		  -webkit-filter: blur(3px);
-		  -moz-filter: blur(3px);
-		  -o-filter: blur(3px);
-		  -ms-filter: blur(3px);
-		  filter: blur(3px);
+        -webkit-filter: brightness(60%);
+        filter:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' ><filter id='bright60'><feComponentTransfer><feFuncR type='linear' slope='0.60'/><feFuncG type='linear' slope='0.60' /><feFuncB type='linear' slope='0.60' /></feComponentTransfer></filter></svg>#bright60");
+        filter:brightness(60%);
+		  // -webkit-filter: blur(3px);
+		  // -moz-filter: blur(3px);
+		  // -o-filter: blur(3px);
+		  // -ms-filter: blur(3px);
+		  // filter: blur(3px);
     }
 }
