@@ -13,7 +13,8 @@
     "angular-ui-router": "*",
     "angular-route": "*",
     "angular-resource": "*",
-    "angular-animate": "*"
+    "angular-animate": "*",
+    "owlcar": "*"
   },
   "ignore": [
     "node_modules",

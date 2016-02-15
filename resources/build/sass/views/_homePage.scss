@@ -1,0 +1,23 @@
+#InstaContainer {
+	& #owl-demo {
+		padding: 30px 0px; 
+
+		& .owl-item {
+		    padding: 0px 15px 30px;
+
+		    & .reactionContainer {
+			    color: white;
+			    padding: 10px 0px;
+			    width: 100%;
+
+			    & i {
+			    	margin-right: 5px; 
+			    }
+
+			    & p {
+			    	margin-bottom: 0px; 
+			    }
+		    }
+		}
+	}
+}

@@ -3,6 +3,16 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    php: {
+        test: {
+            options: {
+              base: './../views',
+              port: 8010,
+                keepalive: true,
+                open: true
+            }
+        }
+    },
     connect: {
       example: {
         port: 1337,
@@ -45,7 +55,7 @@ module.exports = function(grunt) {
           './bower_components/jquery/dist/jquery.js',
           './bower_components/angular-animate/angular-animate.js',
           './bower_components/sass-bootstrap/dist/js/bootstrap.js',
-          './bower_components/angular-base64-upload/dist/angular-base64-upload.js'
+          './bower_components/owlcar/owl-carousel/owl.carousel.min.js'
         ],
         dest: '../../views/dist/dependencies.min.js'
       },
@@ -53,6 +63,9 @@ module.exports = function(grunt) {
         src: [
           './bower_components/sass-bootstrap/dist/css/bootstrap-theme.min.css',
           './bower_components/sass-bootstrap/dist/css/bootstrap.min.css',
+          './bower_components/owlcar/owl-carousel/owl.carousel.css',
+          './bower_components/owlcar/owl-carousel/owl.theme.css',
+          './bower_components/owlcar/owl-carousel/owl.transitions.css'
         ],
         dest: '../../views/dist/dependencies.min.css'
       }
@@ -90,6 +103,7 @@ module.exports = function(grunt) {
 
   // Load the plugin that provides the tasks regarding grunt.
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-php');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-sass');
@@ -97,6 +111,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-connect');
 
   // Default task(s).
-  grunt.registerTask('default', ['watch', 'concat', 'connect:example']);
+  grunt.registerTask('default', ['watch', 'concat', 'connect:example', 'php']);
 
 };
