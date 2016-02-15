@@ -11,14 +11,14 @@ app.controller("mainController", [ "$scope", "$http", function(a, b) {
 
 app.controller("startPageController", [ "$scope", "$http", "instagram", function(a, b, c) {
     console.log("Inne i startPageController");
-    a.instaTokenVvZ = "20902211";
-    a.instaTokenSth = "406306036";
-    a.instaTokenNN = "6847274";
+    a.instaUsrVvZ = "20902211";
+    a.instaUsrSth = "406306036";
+    a.instaUsrNN = "6847274";
     a.initInsta = function() {
         console.log("initInsta");
         $("#InstaContainer").instastream({
             instaToken: "20902211.1677ed0.328409468c4b440d87971179adb2e4dd",
-            instaUser: a.instaTokenVvZ,
+            instaUser: a.instaUsrSth,
             instaResults: 10,
             instaMenu: "yes"
         });

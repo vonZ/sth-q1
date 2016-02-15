@@ -3,16 +3,6 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    php: {
-        test: {
-            options: {
-              base: './../views',
-              port: 8010,
-                keepalive: true,
-                open: true
-            }
-        }
-    },
     connect: {
       example: {
         port: 1337,
@@ -103,7 +93,6 @@ module.exports = function(grunt) {
 
   // Load the plugin that provides the tasks regarding grunt.
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-php');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-sass');
@@ -111,6 +100,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-connect');
 
   // Default task(s).
-  grunt.registerTask('default', ['watch', 'concat', 'connect:example', 'php']);
+  grunt.registerTask('default', ['watch', 'concat', 'connect:example']);
 
 };
