@@ -1,11 +1,11 @@
-/*! angular-grunt-foundation 2016-02-15 */
+/*! angular-grunt-foundation 2016-02-16 */
 var app = angular.module("sthlmHar", [ "ui.router" ]);
 
 app.controller("aboutUsPageController", [ "$scope", "$http", function(a, b) {
     console.log("Inne i aboutusPageController");
 } ]);
 
-app.controller("mainController", [ "$scope", "$http", function(a, b) {
+app.controller("mainController", [ "$scope", "$http", "$state", function(a, b, c) {
     console.log("Inne i mainCtrl");
 } ]);
 
@@ -18,7 +18,7 @@ app.controller("startPageController", [ "$scope", "$http", "instagram", function
         console.log("initInsta");
         $("#InstaContainer").instastream({
             instaToken: "20902211.1677ed0.328409468c4b440d87971179adb2e4dd",
-            instaUser: a.instaUsrSth,
+            instaUser: a.instaUsrVvZ,
             instaResults: 10,
             instaMenu: "yes"
         });
@@ -98,9 +98,9 @@ app.factory("instagram", [ "$http", function(a) {
 } ]);
 
 app.config([ "$stateProvider", "$urlRouterProvider", function(a, b) {
-    b.otherwise("/home");
+    b.otherwise("/hem");
     a.state("home", {
-        url: "/home",
+        url: "/hem",
         templateUrl: "partials/startPage.html",
         controller: "startPageController"
     }).state("about", {
@@ -134,6 +134,23 @@ var initSlider = function() {
         a.trigger("owl.prev");
     });
 };
+
+$(window).scroll(function() {
+    if ($(this).scrollTop() > 1) {
+        $("header").addClass("sticky");
+    } else {
+        $("header").removeClass("sticky");
+    }
+    $(".card").each(function(a) {
+        var b = $(this).offset().top + $(this).outerHeight();
+        var c = $(window).scrollTop() + $(window).height();
+        if (c > b) {
+            $(this).animate({
+                opacity: "1"
+            }, 500);
+        }
+    });
+});
 
 (function(a, b, c) {
     var d = "instastream", e = b.document, f = {

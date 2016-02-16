@@ -5,8 +5,15 @@
 header {
     display: inline-block;
     width: 100%;
-    
-	& .wrapper {
-	    padding: 20px 40px 10px 15px;
-	}
+    transition: all 0.4s ease;
+    padding: 20px 40px 10px 15px;
+    background: white; 
+
+    &.sticky {
+    	position: fixed;
+    	background: white; 
+	    padding: 10px 20px 0px;
+        border-bottom: 1px solid #B7B3B3;
+        z-index: 1;
+    }
 }

@@ -24,12 +24,17 @@ i {
         color: $red;
     }
 
+    &.fa-6x {
+        font-size: 6em; 
+    }
+
 }
 
 a {
     &:hover,
     &:focus {
         text-decoration: none;
+        color: black;
     }
 }
 

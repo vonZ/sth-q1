@@ -16,8 +16,8 @@
 </head>
 <body ng-app="sthlmHar" ng-controller="mainController">
 	<header>
-		<div id="NavigationWrapper"></div>
-		<div class="wrapper">
+		<!-- <div id="NavigationWrapper"></div> -->
+		<nav class="wrapper">
 			<span class="logo col-md-3">
 				<a href="/">
 					<!-- <img src="img/sth_logo.png" class="img-responsive"> -->
@@ -31,9 +31,10 @@
 			        <li><a ui-sref="about">Om oss</a></li>
 			        <li><a ui-sref="findUs">Hitta till oss</a></li>
 			        <li><a ui-sref="prices">Priser</a></li>
+		         <!--    <li ng-repeat="page in menuItems"> <a ng-click="setPage(page)">{{page}}</a></li> -->
 			    </ul>
 		    </div>
-	    </div>
+	    </nav>
 	</header>
 
  	<div ui-view></div>

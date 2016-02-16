@@ -1,107 +1,15 @@
-.wrapperBox {
-	background: white;
-    padding: 30px 50px;
-    min-height: 400px;
-    margin-top: 70px;
-    display: inline-block;
-    border-radius: 3px;
-    box-shadow: 0px 0px 10px rgba(136, 136, 136, 0.15);
+.noPadding {
+	padding: 0px; 
 }
 
-.welcomeContent {
-    margin-bottom: 200px;
-    padding: 130px;
-
-    & h1 {
-    	text-transform: uppercase;
-        font-weight: bold; 
-        color: white;
-    }
-
-    & p {
-        color: white; 
-    }
+hr {
+	border: solid 1px #CECECE;
+	display: block;
+	margin: 25px auto;
+	width: 100%;
+	display: inline-block;
 }
 
-section {
-    padding: 20px 0px;
-
-    &:nth-child(even) {
-        background-color: white; 
-    }
-
-    &:nth-child(odd) {
-        background-color: #EDEDED; 
-    }
-
-    & .wrapper {
-        display: inline-block;
-        width: 100%;
-        padding: 30px 0px;
-    }
-}
-
-.container {
-    max-width: 1400px;
-    width: 100%;
-}
-
-.pushBox {
-    background: white;
-    padding: 25px;
-    margin-bottom: 20px;
-    border-radius: 15px;
-    height: 220px;
-
-    &:hover {
-        border: 1px solid #A4A3A3;
-    }
-
-    & img {
-        display: inline-block;
-    }
-
-    &#Wella {
-        padding-top: 40px;
-    }
-
-    &#KM {
-        padding-top: 7px;
-    }
-
-    &#LP {
-        padding-top: 45px; 
-    }
-}
-
-.content {
-    padding: 30px 70px;
-}
-
-button {
-	-webkit-appearance: none;    
-	padding: 15px 60px;
-    margin: 20px 0px;
-    -webkit-appearance: none;
-    border: none;
-    cursor: pointer;
-
-    &#StartPageTeaser {
-	 	background: #247AA0;
- 	   	color: white;
-		text-transform: uppercase;
-    	border-radius: 5px;
-    }
-}
-
-.animated {
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-}
-
-.fadeInDown {
-    -webkit-animation-name: fadeInDown;
-    animation-name: fadeInDown;
+.hideme {
+   
 }
