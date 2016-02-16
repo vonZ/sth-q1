@@ -18,7 +18,7 @@ app.controller("startPageController", [ "$scope", "$http", "instagram", function
         console.log("initInsta");
         $("#InstaContainer").instastream({
             instaToken: "20902211.1677ed0.328409468c4b440d87971179adb2e4dd",
-            instaUser: a.instaUsrVvZ,
+            instaUser: a.instaUsrSth,
             instaResults: 10,
             instaMenu: "yes"
         });
