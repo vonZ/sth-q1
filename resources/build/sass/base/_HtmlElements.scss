@@ -2,7 +2,7 @@
 
 
 body {
-	background-color: #E0E0E0;
+	/*background-color: #E0E0E0;*/
 }
 
 .wrapperBox {
@@ -38,15 +38,16 @@ body {
 .topWrapper {
     height: 180px;
     padding: 0px;
-    background-color: #004F71;
+    /*background-color: #004F71;*/
+    background-color: #363839; 
 
     & .inside {
-        max-width: 167px;
+        max-width: 337px;
         margin: 0px auto;
 
         &#InnerTopWrapper {
             & .desc {
-                margin-top: 60px;
+                margin-top: 35px;
             }
 
             & i {
@@ -59,12 +60,21 @@ body {
     & h1, span {
         color: white; 
         margin: 5px; 
+        font-size: 6em;
     }
 
 }
 
 section {
     padding: 20px 0px;
+
+    &.bottomOfSet {
+    	opacity: 0; 
+    }
+
+    &:nth-child(-n+2) {
+        opacity: 1; 
+    }
 
     &:nth-child(even) {
         background-color: white; 

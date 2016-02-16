@@ -141,7 +141,7 @@ $(window).scroll(function() {
     } else {
         $("header").removeClass("sticky");
     }
-    $(".card").each(function(a) {
+    $(".bottomOfSet").each(function(a) {
         var b = $(this).offset().top + $(this).outerHeight();
         var c = $(window).scrollTop() + $(window).height();
         if (c > b) {

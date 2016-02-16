@@ -28,7 +28,7 @@ $(window).scroll(function() {
 		$('header').removeClass("sticky");
 	}
 
-	$('.card').each( function(i){            
+	$('.bottomOfSet').each( function(i){            
         var bottom_of_object = $(this).offset().top + $(this).outerHeight();
         var bottom_of_window = $(window).scrollTop() + $(window).height();
         
