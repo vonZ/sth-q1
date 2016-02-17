@@ -1,12 +1,83 @@
-/*! angular-grunt-foundation 2016-02-16 */
-var app = angular.module("sthlmHar", [ "ui.router" ]);
+/*! angular-grunt-foundation 2016-02-17 */
+var app = angular.module("sthlmHar", [ "ui.router", "google-maps" ]);
 
 app.controller("aboutUsPageController", [ "$scope", "$http", function(a, b) {
     console.log("Inne i aboutusPageController");
 } ]);
 
+app.controller("findUsPageController", [ "$scope", "$http", "$document", function(a, b, c) {
+    console.log("Inne i findUsPageController");
+    a.showMarker = false;
+    a.destination = "St:Eriksgatan 23 112 39 Stockholm";
+    a.map = {
+        control: {},
+        center: {
+            latitude: 59.3313821,
+            longitude: 18.0282956
+        },
+        zoom: 14
+    };
+    a.marker = {
+        center: {
+            latitude: 59.3313821,
+            longitude: 18.0282956
+        }
+    };
+    var d = new google.maps.DirectionsRenderer({
+        draggable: true
+    });
+    var e = new google.maps.DirectionsService();
+    var f = new google.maps.Geocoder();
+    a.directions = {
+        origin: "",
+        destination: a.destination,
+        showList: true
+    };
+    a.getDirections = function() {
+        navigator.geolocation.getCurrentPosition(function(b) {
+            var c = new google.maps.LatLng(b.coords.latitude, b.coords.longitude);
+            a.$apply(function() {
+                a.long = b.coords.longitude.toString();
+                a.lat = b.coords.latitude.toString();
+                console.log("$scope.long: ", a.long);
+                console.log("$scope.lat: ", a.lat);
+                var c = new google.maps.Geocoder();
+                var d = new google.maps.LatLng(a.lat, a.long);
+                c.geocode({
+                    latLng: d
+                }, function(b, c) {
+                    if (c == google.maps.GeocoderStatus.OK) {
+                        if (b[1]) {
+                            a.fromAdress = b[1].formatted_address.toString();
+                        } else {
+                            console.log("Location not found");
+                        }
+                    } else {
+                        console.log("Geocoder failed due to: " + c);
+                    }
+                });
+            });
+        });
+        var b = {
+            origin: a.directions.origin,
+            destination: a.directions.destination,
+            travelMode: google.maps.DirectionsTravelMode.TRANSIT
+        };
+        e.route(b, function(b, c) {
+            a.showMarker = true;
+        });
+    };
+} ]);
+
 app.controller("mainController", [ "$scope", "$http", "$state", function(a, b, c) {
     console.log("Inne i mainCtrl");
+    a.getClass = function(a) {
+        if ($location.path().substr(0, a.length) == a) {
+            return "active";
+        } else {
+            return "";
+        }
+    };
 } ]);
 
 app.controller("startPageController", [ "$scope", "$http", "instagram", function(a, b, c) {
@@ -110,7 +181,7 @@ app.config([ "$stateProvider", "$urlRouterProvider", function(a, b) {
     }).state("findUs", {
         url: "/hitta-hit",
         templateUrl: "partials/findUs.html",
-        controller: "aboutUsPageController"
+        controller: "findUsPageController"
     }).state("prices", {
         url: "/priser",
         templateUrl: "partials/prices.html",
@@ -147,7 +218,7 @@ $(window).scroll(function() {
         if (c > b) {
             $(this).animate({
                 opacity: "1"
-            }, 500);
+            }, 700);
         }
     });
 });

@@ -1,4 +1,4 @@
-var app = angular.module('sthlmHar', ['ui.router']);
+var app = angular.module('sthlmHar', ['ui.router', 'google-maps']);
 
 
 

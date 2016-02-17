@@ -1,5 +1,5 @@
-@import "colors.scss";  
-@import "base.scss"; 
+@import "../base/colors.scss";  
+@import "../base/base.scss"; 
 
 body {
 	/*background-color: #E0E0E0;*/
@@ -42,18 +42,27 @@ body {
     background-color: #363839; 
 
     & .inside {
-        max-width: 337px;
         margin: 0px auto;
 
-        &#InnerTopWrapper {
-            & .desc {
-                margin-top: 35px;
-            }
+        &#X1-container {
+            max-width: 498px;
+        }
 
-            & i {
-                margin-right: 20px;
-                color: white; 
-            }
+        &#X2-container {
+            max-width: 337px;
+        }
+
+        &#X3-container {
+            max-width: 265px;
+        }
+
+        & .desc {
+            margin-top: 35px;
+        }
+
+        & i {
+            margin-right: 20px;
+            color: white; 
         }
     }
 
@@ -98,11 +107,11 @@ section {
     }
 }
 
-/*.container {
-    max-width: 1400px;
+.container {
+    max-width: 1200px;
     width: 100%;
 }
-*/
+
 .pushBox {
     background: white;
     padding: 25px;
@@ -163,7 +172,15 @@ button {
     animation-name: fadeInDown;
 }
 
+.angular-google-map {
+    width: 100%;
+}
 
+.angular-google-map-container {
+    height: 400px;
+    display: inline-block;
+    width: 100%;
+}
 
 @include respond-to(small) {
 

@@ -18,9 +18,11 @@
 
 /*Base*/
 @import "base/_base.scss"; 
+@import "base/_typography"; 
 
 /*Components*/
 @import "components/_baseComponents.scss";
+@import "components/_HtmlElements"; 
 @import "components/_navigation.scss";
 @import "components/_header.scss";
 @import "components/_layoutBox.scss";

@@ -14,7 +14,7 @@
   }
 
   @else if $breakpoint == "small" {
-    @media (min-width: 0px) and (max-width: $mobile) {
+    @media (min-width: $mobile) {
       @content;
     }
   }

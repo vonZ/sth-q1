@@ -21,7 +21,7 @@ app
     .state('findUs', {
         url: '/hitta-hit',
         templateUrl: 'partials/findUs.html',
-        controller: 'aboutUsPageController'
+        controller: 'findUsPageController'
     })
 
     .state('prices', {
