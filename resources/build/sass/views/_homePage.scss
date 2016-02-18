@@ -18,6 +18,23 @@
 			    	margin-bottom: 0px; 
 			    }
 		    }
+
+
 		}
+	}
+}
+
+.customNavigation {
+	& a {
+	    position: absolute;
+	    bottom: -400px;
+
+	    &.prev {
+	    	left: 50px;
+	    }
+
+	    &.next {
+	    	right: 50px;
+	    }
 	}
 }

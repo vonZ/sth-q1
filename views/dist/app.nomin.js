@@ -1,4 +1,4 @@
-/*! angular-grunt-foundation 2016-02-17 */
+/*! angular-grunt-foundation 2016-02-18 */
 var app = angular.module("sthlmHar", [ "ui.router", "google-maps" ]);
 
 app.controller("aboutUsPageController", [ "$scope", "$http", function(a, b) {
@@ -34,30 +34,6 @@ app.controller("findUsPageController", [ "$scope", "$http", "$document", functio
         showList: true
     };
     a.getDirections = function() {
-        navigator.geolocation.getCurrentPosition(function(b) {
-            var c = new google.maps.LatLng(b.coords.latitude, b.coords.longitude);
-            a.$apply(function() {
-                a.long = b.coords.longitude.toString();
-                a.lat = b.coords.latitude.toString();
-                console.log("$scope.long: ", a.long);
-                console.log("$scope.lat: ", a.lat);
-                var c = new google.maps.Geocoder();
-                var d = new google.maps.LatLng(a.lat, a.long);
-                c.geocode({
-                    latLng: d
-                }, function(b, c) {
-                    if (c == google.maps.GeocoderStatus.OK) {
-                        if (b[1]) {
-                            a.fromAdress = b[1].formatted_address.toString();
-                        } else {
-                            console.log("Location not found");
-                        }
-                    } else {
-                        console.log("Geocoder failed due to: " + c);
-                    }
-                });
-            });
-        });
         var b = {
             origin: a.directions.origin,
             destination: a.directions.destination,
@@ -71,11 +47,17 @@ app.controller("findUsPageController", [ "$scope", "$http", "$document", functio
 
 app.controller("mainController", [ "$scope", "$http", "$state", function(a, b, c) {
     console.log("Inne i mainCtrl");
-    a.getClass = function(a) {
-        if ($location.path().substr(0, a.length) == a) {
-            return "active";
-        } else {
-            return "";
+    a.getMenu = function() {
+        b.get("navData.json").success(function(b) {
+            a.menuItems = b;
+            console.log("$scope.getMenu: ", a.items);
+        });
+    };
+    a.getMenu();
+    a.currentMenuItem = function(b) {
+        a.currentPath = b;
+        if (window.location.href.indexOf(a.currentPath) > -1) {
+            return "currentPath";
         }
     };
 } ]);
@@ -213,7 +195,7 @@ $(window).scroll(function() {
         $("header").removeClass("sticky");
     }
     $(".bottomOfSet").each(function(a) {
-        var b = $(this).offset().top + $(this).outerHeight();
+        var b = $(this).offset().top + $(this).outerHeight() - 300;
         var c = $(window).scrollTop() + $(window).height();
         if (c > b) {
             $(this).animate({

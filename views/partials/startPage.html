@@ -1,16 +1,16 @@
 <div class="text-center" id="StartPageHeaderContent">
     <div class="imgOverflow">
-    	<video muted loop id="bgvid" poster="">
+    	<video autoplay muted loop id="bgvid" poster="">
             <source src="img/video.mp4" type="video/mp4" />
         </video>
     </div>
 
     <div class="welcomeContent">
-        <h1 class="animated fadeInDown"> Kungsholmens frisör</h1>
+        <!-- <h1 class="animated fadeInDown"> Kungsholmens frisör</h1>
         <p>Omvårdande experthjälp med ren passion</p>
       	<button id="StartPageTeaser">
     		Button
-    	</button>
+    	</button> -->
     </div>
 </div>
 
@@ -80,12 +80,15 @@
 		<div class="text-center">
 			<h3>Stcklm hår på instagram</h3>
 		</div>
-	 	<div class="customNavigation">
-  			<a class="btn prev">Föregående</a>
-  			<a class="btn next">Nästa</a>
-  		</div>
 	 	<div id="InstaContainer" ng-init="initInsta()"></div>
-
+	 	<div class="customNavigation text-center visible-lg visible-md">
+  			<a href="" class="prev">
+  				<i class="fa fa-caret-left fa-4x"></i>
+  			</a>
+  			<a href="" class="next">
+  				<i class="fa fa-caret-right fa-4x"></i>
+  			</a>
+  		</div>
 	 	<!-- <button class="nextInsta">Ladda fler</button> -->
 	 </div>
 </section>

@@ -3,6 +3,19 @@
 
 body {
 	/*background-color: #E0E0E0;*/
+    min-width: 320px;
+}
+
+
+table {
+
+    & tbody {
+        & tr {
+            &:nth-child(even) {
+                background-color: #f5f5f5;
+            }
+        }
+    }
 }
 
 .wrapperBox {
@@ -16,7 +29,7 @@ body {
 }
 
 .welcomeContent {
-    margin-bottom: 200px;
+    margin-bottom: 300px;
     padding: 130px;
 
     & h1 {
@@ -28,11 +41,6 @@ body {
     & p {
         color: white; 
     }
-}
-
-.wrapper {
-    display: inline-block;
-    width: 100%; 
 }
 
 .topWrapper {
@@ -101,10 +109,31 @@ section {
     }
 
     & .wrapper {
-        display: inline-block;
-        width: 100%;
-        padding: 30px 0px;
+         padding: 30px 0px; 
     }
+}
+
+.sectionBackground {
+    max-height: 420px;
+    overflow: hidden;
+    width: 100%;
+
+    & img {
+        width: 100%; 
+        @include fadeIn(2s); 
+    }
+}
+
+
+.wrapper {
+    display: inline-block;
+    width: 100%;
+}
+
+.panel { 
+    margin: 20px 0px;
+    border-radius: 0px;
+    box-shadow: none;
 }
 
 .container {
@@ -120,11 +149,7 @@ section {
     height: 220px;
 
     &:hover {
-        border: 1px solid $gray;
-    }
-
-    & img {
-        display: inline-block;
+        border: 2px solid rgba(0, 0, 0, 0.16);
     }
 
     &#Wella {
@@ -138,6 +163,20 @@ section {
     &#LP {
         padding-top: 45px; 
     }
+
+    &.info {
+        background: #F5F5F5;
+        border-radius: 0px;
+
+        &:hover {
+            border: none;
+        }
+    }
+
+    & img {
+        display: inline-block;
+    }
+
 }
 
 .content {
@@ -174,6 +213,8 @@ button {
 
 .angular-google-map {
     width: 100%;
+    @include fadeIn(1s); 
+
 }
 
 .angular-google-map-container {
@@ -187,6 +228,18 @@ button {
 	.container {
 		width: 100%; 
 	}
+
+    .content {
+        padding: 30px; 
+    }
+
+    .topWrapper {
+        height: 120px; 
+        
+        & h1 {
+            font-size: 3em;
+        }
+    }
 
 }
 

@@ -13,18 +13,39 @@
     text-transform: uppercase;
 
     & a {
-        font-size: 32px;
+        font-size: 29px;
         font-weight: bold; 
     }
 }
+
 nav {
+
+    &.wrapper {
+        padding: 0px; 
+    }
 
     & a {
         color: $gray; 
+
+        &.currentPath {
+            color: $orange;
+            font-weight: bold;
+
+            &:after {
+                content: " ";
+                border: solid 1px $orange;
+                display: block;
+                margin-top: 7px;
+            }
+        }
     }
-    .navigation {
-        display: inline-block;
-        float: right;
+    .navigation {/*
+        display: inline-block; 
+        width: 100%;*/
+
+        & ul {
+            float: right;
+        }
 
         & li {
             float: left;
@@ -41,6 +62,36 @@ nav {
             & a {
                 &:hover {
                     background: none;
+                }
+            }
+        }
+    }
+
+    &#RespMenu {
+        & ul {
+            width: 100%; 
+            position: absolute;
+            background: white;
+            z-index: 9999;
+            top: 50px;
+            margin: 10px 0px;
+            width: 100%;
+
+            & li {
+                margin: 0;
+                padding-left: 0px;
+                float: none;
+                width: 100%; 
+                border-bottom: 1px solid rgba(54, 56, 57, 0.23);
+
+                & a {
+                    padding: 10px 25px 10px; 
+                    width: 100%; 
+                    display: inline-block;
+
+                    &:after {
+                        content: none;
+                    }
                 }
             }
         }
@@ -62,10 +113,20 @@ nav {
         -webkit-filter: brightness(60%);
         filter:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' ><filter id='bright60'><feComponentTransfer><feFuncR type='linear' slope='0.60'/><feFuncG type='linear' slope='0.60' /><feFuncB type='linear' slope='0.60' /></feComponentTransfer></filter></svg>#bright60");
         filter:brightness(60%);
-		  // -webkit-filter: blur(3px);
-		  // -moz-filter: blur(3px);
-		  // -o-filter: blur(3px);
-		  // -ms-filter: blur(3px);
-		  // filter: blur(3px);
+		/*-webkit-filter: blur(3px);
+		-moz-filter: blur(3px);
+		-o-filter: blur(3px);
+		-ms-filter: blur(3px);
+		filter: blur(3px);*/
     }
+}
+
+
+@include respond-to(small) {
+
+   .logo {
+        padding: 10px; 
+   }
+ 
+
 }

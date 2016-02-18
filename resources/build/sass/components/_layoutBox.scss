@@ -70,3 +70,17 @@
         }
     }
 }
+
+
+@include respond-to(small) {
+
+    .card {
+        & .cardBody {
+            padding: 0px; 
+        }
+
+    }
+
+
+}
+

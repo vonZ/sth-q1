@@ -1,7 +1,5 @@
 //Route provider
-app
-
-    .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/hem');
     
@@ -29,46 +27,5 @@ app
         templateUrl: 'partials/prices.html',
         controller: 'aboutUsPageController'
     });
-
-    //     var home = {
-    //             name: 'home',
-    //             url: '/',
-    //             templateUrl: 'partials/startPage.html',
-    //             controller: 'startPageController'
-    //         },
-    //         aboutUs = {
-    //             name: 'Om oss',
-    //             url: 'aboutUs',
-    //             parent: home,
-    //             templateUrl: 'partials/aboutUs.html',
-    //             controller: 'aboutUsPageController'
-    //         },
-    //         findUs = {
-    //             name: 'Hitta hit',
-    //             url: 'findUs',
-    //             parent: home,
-    //             templateUrl: 'partials/findUs.html',
-    //             controller: 'aboutUsPageController'
-    //         },
-    //         prices = {
-    //             name: 'Priser',
-    //             url: 'prices',
-    //             parent: home,
-    //             templateUrl: 'partials/prices.html',
-    //             controller: 'aboutUsPageController'
-    //         };
-    
-    //     $stateProvider.state(home);
-    //     $stateProvider.state(aboutUs);
-    //     $stateProvider.state(findUs);
-    //     $stateProvider.state(prices);
-    // }])
-
-    // .run(['$state', function ($state) {
-    //    $state.transitionTo('home'); 
-    // }]);
-//     .run(['$state', function ($state) {
-//        $state.transitionTo('home'); 
-//     }])
 
 }]);

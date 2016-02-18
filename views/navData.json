@@ -1,0 +1,21 @@
+[
+	{
+	"name": "Hem", 
+	"url": "/hem"
+	},
+
+	{
+	"name": "Om oss", 
+	"url": "/om-oss"
+	},
+
+	{
+	"name": "Hitta hit", 
+	"url": "/hitta-hit"
+	},
+	
+	{
+	"name": "Priser", 
+	"url": "/priser"
+	}
+]

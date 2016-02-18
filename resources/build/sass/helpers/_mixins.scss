@@ -14,7 +14,7 @@
   }
 
   @else if $breakpoint == "small" {
-    @media (min-width: $mobile) {
+    @media (min-width: 0px) and (max-width: $mobile) {
       @content;
     }
   }
@@ -64,6 +64,47 @@
         min-height: $minHeight;
         width: $minWidth; 
     }
+}
 
-   
+@mixin fadeIn($seconds) {
+   -webkit-animation: fadein $seconds; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein $seconds; /* Firefox < 16 */
+        -ms-animation: fadein $seconds; /* Internet Explorer */
+         -o-animation: fadein $seconds; /* Opera < 12.1 */
+            animation: fadein $seconds;
+
+    
+  @keyframes fadein {
+      from {
+          opacity:0;
+      }
+      to {
+          opacity:1;
+      }
+  }
+  @-moz-keyframes fadein { /* Firefox */
+      from {
+          opacity:0;
+      }
+      to {
+          opacity:1;
+      }
+  }
+  @-webkit-keyframes fadein { /* Safari and Chrome */
+      from {
+          opacity:0;
+      }
+      to {
+          opacity:1;
+      }
+  }
+  @-o-keyframes fadein { /* Opera */
+      from {
+          opacity:0;
+      }
+      to {
+          opacity: 1;
+      }
+  }
+
 }

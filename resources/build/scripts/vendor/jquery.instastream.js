@@ -130,7 +130,7 @@
                   $('#slider-item'+ l).delay(200*k).fadeIn(800);
               }
 
-               $(document).ready(function () {
+              $(document).ready(function () {
                   initSlider();
               }); 
           });        

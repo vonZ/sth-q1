@@ -6,7 +6,7 @@ header {
     display: inline-block;
     width: 100%;
     transition: all 0.4s ease;
-    padding: 20px 40px 10px 15px;
+    padding: 20px 40px 0px 15px;
     background: white; 
 
     &.sticky {
@@ -16,4 +16,24 @@ header {
         border-bottom: 1px solid #B7B3B3;
         z-index: 1;
     }
+
+    & .iconPlaceholder {
+        padding: 20px;
+    }
 }
+
+@include respond-to(small) {
+
+    header {
+        /*padding: 10px 10px 10px;*/
+        padding: 0px; 
+        transition: none;
+
+        &.sticky {
+            position: relative;
+            padding: 0px;
+        }
+    }
+}
+
+
