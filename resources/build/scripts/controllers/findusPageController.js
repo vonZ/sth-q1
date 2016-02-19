@@ -14,7 +14,6 @@ app.controller('findUsPageController', ['$scope','$http', '$document', '$timeout
 		console.log("lat (i initMap): ", lat);
 		console.log("fromAdress (i initMap) HATA --->", fromAdress); 
 
-
 		$scope.map = {
 		    control: {
 		    	draggable: true
