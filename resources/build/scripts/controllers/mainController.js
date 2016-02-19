@@ -1,8 +1,6 @@
 //Controller
-app.controller('mainController', ['$scope','$http', '$state',  function($scope, $http, $state){
+app.controller('mainController', ['$scope','$http', '$state', '$rootScope' ,  function($scope, $http, $state, $rootScope){
 	console.log("Inne i mainCtrl");
-
-	// $scope.menuItems = ['Hem', 'Om oss', 'Hitta hit', 'Priser'];
 
 	$scope.getMenu = function () {
         $http.get('navData.json').success(function (result) {
@@ -13,10 +11,6 @@ app.controller('mainController', ['$scope','$http', '$state',  function($scope, 
 
     $scope.getMenu(); 
 
-	// $scope.setPage = function (page) {
- //        $state.transitionTo(page);
- //    };
-
  	$scope.currentMenuItem = function(currentPath) {
 		$scope.currentPath = currentPath;
 		if (window.location.href.indexOf($scope.currentPath) > -1) {
@@ -24,14 +18,12 @@ app.controller('mainController', ['$scope','$http', '$state',  function($scope, 
 		}
 	};
 
- 	//Current select in menu
-    // $scope.currentMenuItem = function(path) {
-    //     if ($location.path().substr(0, path.length) == path) {
-    //       return "active";
-    //     } else {
-    //         return "";
-    //     }
-    // };
+	$rootScope.$on('$stateChangeStart', 
+	function(event, toState, toParams, fromState, fromParams){ 
+	    console.log("State change"); 
+	    $scope.isRespMenuOpen = false; 
+	}); 
+
 
 
 }]);

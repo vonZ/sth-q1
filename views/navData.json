@@ -1,21 +1,25 @@
 [
 	{
-	"name": "Hem", 
+	"name": "Hem",
+	"stateName": "home", 
 	"url": "/hem"
 	},
 
 	{
 	"name": "Om oss", 
+	"stateName": "about",
 	"url": "/om-oss"
 	},
 
 	{
-	"name": "Hitta hit", 
+	"name": "Hitta hit",
+	"stateName": "findUs", 
 	"url": "/hitta-hit"
 	},
 	
 	{
 	"name": "Priser", 
+	"stateName": "prices",
 	"url": "/priser"
 	}
 ]

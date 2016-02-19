@@ -117,6 +117,7 @@ section {
     max-height: 420px;
     overflow: hidden;
     width: 100%;
+    z-index: -1;
 
     & img {
         width: 100%; 
@@ -141,11 +142,22 @@ section {
     width: 100%;
 }
 
+#StartPageHeaderContent {
+    & img {
+        width: 100%; 
+    }
+
+    & .bgContent {
+        background: black;
+        padding: 20px;
+    }
+}
+
 .pushBox {
     background: white;
     padding: 25px;
     margin-bottom: 20px;
-    border-radius: 15px;
+    border-radius: 10px;
     height: 220px;
 
     &:hover {
@@ -162,6 +174,14 @@ section {
 
     &#LP {
         padding-top: 45px; 
+    }
+
+    &#Sebastian {
+        padding-top: 70px; 
+    }
+
+    &#Balmian {
+        padding-top: 75px; 
     }
 
     &.info {
@@ -239,6 +259,11 @@ button {
         & h1 {
             font-size: 3em;
         }
+    }
+
+    .welcomeContent {
+        margin: 0px;
+        padding: 0px; 
     }
 
 }

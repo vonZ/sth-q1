@@ -35,24 +35,46 @@
 			<div class="col-md-8 visible-lg visible-md">
 				<div class="navigation">
 				    <ul>
-				    	<li role="presentation" ng-repeat="item in menuItems">
-	                        <a href="/#{{item.url}}" ng-class="currentMenuItem(item.url);">{{item.name}}</a>
-	                    </li> 
-				     <!--<li><a ui-sref="home">Hem</a></li>
-				        <li><a ui-sref="about">Om oss</a></li>
-				        <li><a ui-sref="findUs">Hitta till oss</a></li>
-				        <li><a ui-sref="prices">Priser</a></li> -->
+	                    <li ng-repeat="item in menuItems">
+	                    	<a ui-sref={{item.stateName}} ui-sref-active="currentPath">{{item.name}}</a>
+	                    </li>
+	                    <li>
+	                    	<a data-toggle="modal" data-target="#myModal">Internetbokning</a>
+	                    </li>
+
+				    	<!--<li><a ui-sref="home" ui-sref-active="currentPath">Hem</a></li>
+				        <li><a ui-sref="about" ui-sref-active="currentPath">Om oss</a></li>
+				        <li><a ui-sref="findUs" ui-sref-active="currentPath">Hitta till oss</a></li>
+				        <li><a ui-sref="prices" ui-sref-active="currentPath">Priser</a></li>  -->
 				    </ul>
 			    </div>
 		    </div>
 
+
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  	<div class="modal-dialog">
+					<div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				        <h4 class="modal-title" id="myModalLabel">Boka din tid</h4>
+				      </div>
+				      <div class="modal-body">
+				          <iframe src="https://www.bokadintid.se/booking3/book_1.asp?s_id=88&su_id=&progress=1&bookinfo=1&folder=&d=1progress=1" width="500" height="800" frameborder="0" allowtransparency="true"></iframe>  
+				      </div>
+					</div>
+				</div>
+			</div>
 			<!-- RESPONSIVE NAVIGATION -->
-		    <nav ng-init="isRespMenuOpen = false" ng-show="isRespMenuOpen" aria-label="huvudmeny" id="RespMenu">  
+		    <div ng-init="isRespMenuOpen = false" ng-show="isRespMenuOpen" aria-label="huvudmeny" id="RespMenu">  
 		    	<div class="navigation">
 				    <ul class="col-md-12 noPadding">
-				    	<li role="presentation" ng-repeat="item in menuItems">
-	                        <a href="/#{{item.url}}" ng-class="currentMenuItem(item.url);">{{item.name}}</a>
-	                    </li> 
+	                    <li ng-repeat="item in menuItems">
+	                    	<a ui-sref={{item.stateName}} ui-sref-active="currentPath">{{item.name}}</a>
+	                    </li>
+	                     <li>
+	                    	<a href="https://www.bokadintid.se/booking3/book_1.asp?s_id=88&su_id=&progress=1&bookinfo=1&folder=&d=1progress=1" target="_blank">Internetbokning</a>
+	                    </li>
 				    </ul>
 			    </div>
 		    </nav>

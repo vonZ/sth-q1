@@ -1,51 +1,105 @@
-/*! angular-grunt-foundation 2016-02-18 */
+/*! angular-grunt-foundation 2016-02-19 */
 var app = angular.module("sthlmHar", [ "ui.router", "google-maps" ]);
 
 app.controller("aboutUsPageController", [ "$scope", "$http", function(a, b) {
     console.log("Inne i aboutusPageController");
 } ]);
 
-app.controller("findUsPageController", [ "$scope", "$http", "$document", function(a, b, c) {
+app.controller("findUsPageController", [ "$scope", "$http", "$document", "$timeout", function(a, b, c, d) {
     console.log("Inne i findUsPageController");
     a.showMarker = false;
     a.destination = "St:Eriksgatan 23 112 39 Stockholm";
-    a.map = {
-        control: {},
-        center: {
-            latitude: 59.3313821,
-            longitude: 18.0282956
-        },
-        zoom: 14
-    };
-    a.marker = {
-        center: {
-            latitude: 59.3313821,
-            longitude: 18.0282956
-        }
-    };
-    var d = new google.maps.DirectionsRenderer({
-        draggable: true
-    });
     var e = new google.maps.DirectionsService();
-    var f = new google.maps.Geocoder();
-    a.directions = {
-        origin: "",
-        destination: a.destination,
-        showList: true
+    var f = new google.maps.DirectionsRenderer({
+        draggable: false
+    });
+    a.initMap = function(b, c, d) {
+        console.log("long (i initMap): ", b);
+        console.log("lat (i initMap): ", c);
+        console.log("fromAdress (i initMap) HATA --->", d);
+        a.map = {
+            control: {
+                draggable: true
+            },
+            center: {
+                latitude: 59.3313821,
+                longitude: 18.0282956
+            },
+            zoom: 13
+        };
+        a.marker = {
+            center: {
+                latitude: 59.3313821,
+                longitude: 18.0282956
+            }
+        };
+        if (d !== undefined) {
+            console.log("fromAdress är inte undefined");
+            d = d.toString();
+            console.log("typeof fromAdress", typeof d);
+        } else {
+            console.log("fromAdress är undefined");
+            d = " ";
+        }
+        console.log("fromAdress (i initMap) HATA --->", d);
+        a.directions = {
+            origin: d,
+            destination: a.destination,
+            showList: true
+        };
+    };
+    a.getGeoCoder = function() {
+        console.log("Inne i getGeoCoder");
+        var b = new google.maps.Geocoder();
+        var c = new google.maps.LatLng(a.lat, a.long);
+        b.geocode({
+            latLng: c
+        }, function(b, c) {
+            console.log("Inne i geocode.geocode");
+            if (c == google.maps.GeocoderStatus.OK) {
+                if (b[1]) {
+                    a.fromAdress = b[1].formatted_address.toString();
+                    console.log("$scope.fromAdress (i getGeoCoder) HATA ---> ", a.fromAdress);
+                } else {
+                    console.log("Location not found");
+                }
+            } else {
+                console.log("Geocoder failed due to: " + c);
+            }
+        });
     };
     a.getDirections = function() {
+        console.log("Inne i getDirections");
+        navigator.geolocation.getCurrentPosition(function(b) {
+            var c = new google.maps.LatLng(b.coords.latitude, b.coords.longitude);
+            a.long = b.coords.longitude.toString();
+            a.lat = b.coords.latitude.toString();
+            a.$apply(function() {
+                console.log("$scope.long (i navigator.geolocation): ", a.long);
+                console.log("$scope.lat: (i navigator.geolocation)", a.lat);
+            });
+        });
+        a.initMap(a.long, a.lat, a.fromAdress);
         var b = {
             origin: a.directions.origin,
             destination: a.directions.destination,
             travelMode: google.maps.DirectionsTravelMode.TRANSIT
         };
+        a.getGeoCoder();
         e.route(b, function(b, c) {
+            console.log("If");
+            var d = new google.maps.Geocoder();
+            a.getGeoCoder();
+            console.log("$scope.fromAdress (i if): ", a.fromAdress);
             a.showMarker = true;
+            f.setDirections(b);
+            f.setMap(a.map.control.getGMap());
+            f.setPanel(document.getElementById("directionsList"));
         });
     };
 } ]);
 
-app.controller("mainController", [ "$scope", "$http", "$state", function(a, b, c) {
+app.controller("mainController", [ "$scope", "$http", "$state", "$rootScope", function(a, b, c, d) {
     console.log("Inne i mainCtrl");
     a.getMenu = function() {
         b.get("navData.json").success(function(b) {
@@ -60,6 +114,10 @@ app.controller("mainController", [ "$scope", "$http", "$state", function(a, b, c
             return "currentPath";
         }
     };
+    d.$on("$stateChangeStart", function(b, c, d, e, f) {
+        console.log("State change");
+        a.isRespMenuOpen = false;
+    });
 } ]);
 
 app.controller("startPageController", [ "$scope", "$http", "instagram", function(a, b, c) {

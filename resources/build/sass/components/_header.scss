@@ -9,6 +9,10 @@ header {
     padding: 20px 40px 0px 15px;
     background: white; 
 
+    & .modal {
+        overflow-y: hidden;
+    }
+
     &.sticky {
     	position: fixed;
     	background: white; 
@@ -32,6 +36,10 @@ header {
         &.sticky {
             position: relative;
             padding: 0px;
+        }
+
+        & .modal {
+            display: none;
         }
     }
 }

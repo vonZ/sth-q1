@@ -1,10 +1,17 @@
 <div class="text-center" id="StartPageHeaderContent">
     <div class="imgOverflow">
-    	<video autoplay muted loop id="bgvid" poster="">
-            <source src="img/video.mp4" type="video/mp4" />
-        </video>
+    	<div class="visible-lg visible-md">
+	    	<video autoplay muted loop id="bgvid" poster="">
+	            <source src="img/video.mp4" type="video/mp4" />
+	        </video>
+        </div>
     </div>
-
+	<div class="visible-xs visible-sm">
+		<!-- <div class="bgContent">
+			<img src="img/sth_logo.png" class="img-responsive">
+		</div>-->
+		<img src="img/video_all.gif" class="img-responsive">
+	</div>
     <div class="welcomeContent">
         <!-- <h1 class="animated fadeInDown"> Kungsholmens frisör</h1>
         <p>Omvårdande experthjälp med ren passion</p>
@@ -37,37 +44,42 @@
 
 				<h3>Vi sammarbetar med</h3>
 				<div class="wrapper">
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 						<div class="pushBox" id="Wella">
-							<a href="#">
-								<img src="img/Wella_logo_black.png" class="img-responsive">
-							</a>
+							<img src="img/Wella_logo_black.png" class="img-responsive">
 						</div>
 					</div>
 
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 						<div class="pushBox">
-							<a href="#">
-								<img src="img/americancrew.png" class="img-responsive">
-							</a>
+							<img src="img/americancrew.png" class="img-responsive">
 						</div>
 					</div>
 
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 						<div class="pushBox" id="KM">
-							<a href="#">
-								<img src="img/km-logo.jpg" class="img-responsive">
-							</a>
+							<img src="img/km-logo.jpg" class="img-responsive">
 						</div>
 					</div>
 
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 						<div class="pushBox" id="LP">
-							<a href="#">
-								<img src="img/logo_living_proof.png" class="img-responsive">
-							</a>
+							<img src="img/logo_living_proof.png" class="img-responsive">
 						</div>
 					</div>
+
+					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+						<div class="pushBox" id="Balmian">
+							<img src="img/balmian.png" class="img-responsive">
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+						<div class="pushBox" id="Sebastian">
+							<img src="img/sebastian-professional-logo.png" class="img-responsive">
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -82,13 +94,13 @@
 		</div>
 	 	<div id="InstaContainer" ng-init="initInsta()"></div>
 	 	<div class="customNavigation text-center visible-lg visible-md">
-  			<a href="" class="prev">
+  	<!-- 		<a href="" class="prev">
   				<i class="fa fa-caret-left fa-4x"></i>
   			</a>
   			<a href="" class="next">
   				<i class="fa fa-caret-right fa-4x"></i>
   			</a>
-  		</div>
+  		</div> -->
 	 	<!-- <button class="nextInsta">Ladda fler</button> -->
 	 </div>
 </section>
