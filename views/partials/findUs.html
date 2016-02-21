@@ -9,11 +9,13 @@
 </div>
 
 
+	<div id="mapOverview"></div>
 
-<div ng-init="getDirections()">
+
+<!-- <div ng-init="getDirections()">
 	<google-map control="map.control" center="map.center" zoom="map.zoom">
 	  <marker ng-if="showMarker" coords="marker.center"></marker>
-	</google-map>
+	</google-map> -->
 
 
 <!-- 	  <form class="form-horizontal" role="form">
@@ -36,10 +38,10 @@
 	  </div>
 	</form> -->
 
-	 <button class="btn btn-primary" ng-click="getDirections()">Get Directions</button>
+	 <!-- <button class="btn btn-primary" ng-click="getDirections()">Get Directions</button> -->
 
 	<!-- <div id="directionsList" ng-show="directions.showList" class="panel panel-primary"></div> -->
-</div>  
+<!-- </div>   -->
 
 
 <div class="container">
@@ -48,7 +50,10 @@
 		  <div class="panel-body">
 		    <h2>Sankt Eriksgatan 23</h2>
 		  </div>
-		  <div class="panel-footer">Panel footer</div>
+		  <div class="panel-footer">
+			<loading></loading>
+			<button ng-click="geolocation()">Nuvarande position</button>
+		  </div>
 		</div>
 	</div>
 </div>

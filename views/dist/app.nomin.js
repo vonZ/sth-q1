@@ -1,100 +1,50 @@
-/*! angular-grunt-foundation 2016-02-20 */
+/*! angular-grunt-foundation 2016-02-21 */
 var app = angular.module("sthlmHar", [ "ui.router", "google-maps", "ngRoute" ]);
 
 app.controller("aboutUsPageController", [ "$scope", "$http", function(a, b) {
     console.log("Inne i aboutusPageController");
 } ]);
 
-app.controller("findUsPageController", [ "$scope", "$http", "$document", "$timeout", function(a, b, c, d) {
+app.controller("findUsPageController", [ "$scope", "$http", "$document", "Map", "$timeout", function(a, b, c, d, e) {
     console.log("Inne i findUsPageController");
-    a.showMarker = false;
-    a.destination = "St:Eriksgatan 23 112 39 Stockholm";
-    var e = new google.maps.DirectionsService();
-    var f = new google.maps.DirectionsRenderer({
-        draggable: false
+    var f = this;
+    a.places = [ {
+        place: "Stockholm hår",
+        desc: "Detta är Stockholm Hår",
+        lat: 59.3313821,
+        "long": 18.0282956
+    } ];
+    angular.element(document).ready(function() {
+        a.overviewMap(a.places);
     });
-    a.initMap = function(b, c, d) {
-        console.log("long (i initMap): ", b);
-        console.log("lat (i initMap): ", c);
-        console.log("fromAdress (i initMap) HATA --->", d);
-        a.map = {
-            control: {
-                draggable: true
-            },
-            center: {
-                latitude: 59.3313821,
-                longitude: 18.0282956
-            },
-            zoom: 13
-        };
-        a.marker = {
-            center: {
-                latitude: 59.3313821,
-                longitude: 18.0282956
-            }
-        };
-        if (d !== undefined) {
-            console.log("fromAdress är inte undefined");
-            d = d.toString();
-            console.log("typeof fromAdress", typeof d);
-        } else {
-            console.log("fromAdress är undefined");
-            d = " ";
-        }
-        console.log("fromAdress (i initMap) HATA --->", d);
-        a.directions = {
-            origin: d,
-            destination: a.destination,
-            showList: true
-        };
+    a.overviewMap = function(b) {
+        console.log("overviewMap");
+        f.Map = initOverviewMap();
+        f.Map = overviewMap(a.places);
     };
-    a.getGeoCoder = function() {
-        console.log("Inne i getGeoCoder");
-        var b = new google.maps.Geocoder();
-        var c = new google.maps.LatLng(a.lat, a.long);
-        b.geocode({
-            latLng: c
-        }, function(b, c) {
-            console.log("Inne i geocode.geocode");
-            if (c == google.maps.GeocoderStatus.OK) {
-                if (b[1]) {
-                    a.fromAdress = b[1].formatted_address.toString();
-                    console.log("$scope.fromAdress (i getGeoCoder) HATA ---> ", a.fromAdress);
-                } else {
-                    console.log("Location not found");
-                }
-            } else {
-                console.log("Geocoder failed due to: " + c);
-            }
+    a.geolocation = function() {
+        a.loading = true;
+        var b = new google.maps.DirectionsService();
+        var c = new google.maps.DirectionsRenderer({
+            draggable: false
         });
-    };
-    a.getDirections = function() {
-        console.log("Inne i getDirections");
         navigator.geolocation.getCurrentPosition(function(b) {
             var c = new google.maps.LatLng(b.coords.latitude, b.coords.longitude);
-            a.long = b.coords.longitude.toString();
-            a.lat = b.coords.latitude.toString();
+            a.long = b.coords.longitude;
+            a.lat = b.coords.latitude;
             a.$apply(function() {
                 console.log("$scope.long (i navigator.geolocation): ", a.long);
                 console.log("$scope.lat: (i navigator.geolocation)", a.lat);
+                a.places.push({
+                    place: "Din nuvarande position",
+                    desc: "",
+                    lat: a.lat,
+                    "long": a.long
+                });
+                console.log("places: ", a.places);
+                a.loading = false;
+                a.overviewMap(a.places);
             });
-        });
-        a.initMap(a.long, a.lat, a.fromAdress);
-        var b = {
-            origin: a.directions.origin,
-            destination: a.directions.destination,
-            travelMode: google.maps.DirectionsTravelMode.TRANSIT
-        };
-        a.getGeoCoder();
-        e.route(b, function(b, c) {
-            console.log("If");
-            var d = new google.maps.Geocoder();
-            a.getGeoCoder();
-            console.log("$scope.fromAdress (i if): ", a.fromAdress);
-            a.showMarker = true;
-            f.setDirections(b);
-            f.setMap(a.map.control.getGMap());
-            f.setPanel(document.getElementById("directionsList"));
         });
     };
 } ]);
@@ -118,18 +68,6 @@ app.controller("mainController", [ "$scope", "$http", "$state", "$rootScope", "$
         console.log("State change");
         a.isRespMenuOpen = false;
     });
-    a.$on("$stateChangeStart", function(a, b, c, d, e) {
-        if (b.resolve) {
-            console.log("loading");
-            loading = true;
-        }
-    });
-    a.$on("$stateChangeSuccess", function(a, b, c, d, e) {
-        if (b.resolve) {
-            console.log("not loading");
-            loading = false;
-        }
-    });
 } ]);
 
 app.controller("startPageController", [ "$scope", "$http", "instagram", function(a, b, c) {
@@ -152,7 +90,7 @@ app.directive("loading", function() {
     return {
         restrict: "E",
         replace: true,
-        template: '<div class="respCenter loading"><span>Laddar</span><img src="../img/ajax-loader.gif" class="respCenterIcon"/></div>',
+        template: '<div class="respCenter loading"><p>Laddar</p><img src="../img/ajax-loader.gif" class="respCenterIcon"/></div>',
         link: function(a, b, c) {
             a.$watch("loading", function(a) {
                 if (a) $(b).show(); else $(b).hide();
@@ -190,6 +128,50 @@ app.directive("showDuringResolve", [ "$rootScope", function(a) {
             b.$on("$destroy", d);
         }
     };
+} ]);
+
+app.factory("Map", [ "$q", function(a) {
+    initOverviewMap = function(a) {
+        console.log("I initOverviewMap");
+        var b = {
+            zoom: 12,
+            center: new google.maps.LatLng(59.3313821, 18.0282956),
+            zoomControl: true
+        };
+        this.map = new google.maps.Map(document.getElementById("mapOverview"), b);
+    };
+    refreshMap = function() {
+        console.log("I refreshMap");
+        window.setTimeout(function() {
+            google.maps.event.trigger(map, "resize");
+        });
+    };
+    overviewMap = function(a) {
+        console.log("I overviewMap");
+        this.markers = [];
+        var b = new google.maps.InfoWindow();
+        var c = function(a) {
+            var c = new google.maps.Marker({
+                map: this.map,
+                position: new google.maps.LatLng(a.lat, a.long),
+                title: a.place
+            });
+            c.content = '<div class="infoWindowContent">' + a.desc + "</div>";
+            google.maps.event.addListener(c, "click", function() {
+                b.setContent("<h2>" + c.title + "</h2>" + c.content);
+                b.open(this.map, c);
+            });
+            this.markers.push(c);
+        };
+        for (i = 0; i < a.length; i++) {
+            c(a[i]);
+        }
+        var d = function(a, b) {
+            a.preventDefault();
+            google.maps.event.trigger(b, "click");
+        };
+    };
+    return Map;
 } ]);
 
 app.factory("posts", [ "$http", function(a) {
