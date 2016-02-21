@@ -1,5 +1,5 @@
-/*! angular-grunt-foundation 2016-02-19 */
-var app = angular.module("sthlmHar", [ "ui.router", "google-maps" ]);
+/*! angular-grunt-foundation 2016-02-20 */
+var app = angular.module("sthlmHar", [ "ui.router", "google-maps", "ngRoute" ]);
 
 app.controller("aboutUsPageController", [ "$scope", "$http", function(a, b) {
     console.log("Inne i aboutusPageController");
@@ -99,7 +99,7 @@ app.controller("findUsPageController", [ "$scope", "$http", "$document", "$timeo
     };
 } ]);
 
-app.controller("mainController", [ "$scope", "$http", "$state", "$rootScope", function(a, b, c, d) {
+app.controller("mainController", [ "$scope", "$http", "$state", "$rootScope", "$window", function(a, b, c, d, e) {
     console.log("Inne i mainCtrl");
     a.getMenu = function() {
         b.get("navData.json").success(function(b) {
@@ -117,6 +117,18 @@ app.controller("mainController", [ "$scope", "$http", "$state", "$rootScope", fu
     d.$on("$stateChangeStart", function(b, c, d, e, f) {
         console.log("State change");
         a.isRespMenuOpen = false;
+    });
+    a.$on("$stateChangeStart", function(a, b, c, d, e) {
+        if (b.resolve) {
+            console.log("loading");
+            loading = true;
+        }
+    });
+    a.$on("$stateChangeSuccess", function(a, b, c, d, e) {
+        if (b.resolve) {
+            console.log("not loading");
+            loading = false;
+        }
     });
 } ]);
 
@@ -140,7 +152,7 @@ app.directive("loading", function() {
     return {
         restrict: "E",
         replace: true,
-        template: '<div class="respCenter loading"><span>Laddar</span><img src="images/ajax-loader.gif" class="respCenterIcon"/></div>',
+        template: '<div class="respCenter loading"><span>Laddar</span><img src="../img/ajax-loader.gif" class="respCenterIcon"/></div>',
         link: function(a, b, c) {
             a.$watch("loading", function(a) {
                 if (a) $(b).show(); else $(b).hide();
@@ -148,6 +160,37 @@ app.directive("loading", function() {
         }
     };
 });
+
+app.directive("resolveLoader", [ "$rootScope", "$timeout", function(a, b) {
+    return {
+        restrict: "E",
+        replace: true,
+        template: '<div class="alert alert-success ng-hide"><strong>Welcome!</strong> Content is loading, please hold.</div>',
+        link: function(c, d) {
+            a.$on("$routeChangeStart", function(a, c, e) {
+                if (e) return;
+                b(function() {
+                    d.removeClass("ng-hide");
+                });
+            });
+            a.$on("$routeChangeSuccess", function() {
+                d.addClass("ng-hide");
+            });
+        }
+    };
+} ]);
+
+app.directive("showDuringResolve", [ "$rootScope", function(a) {
+    return {
+        link: function(b, c) {
+            c.addClass("ng-hide");
+            var d = a.$on("$routeChangeStart", function() {
+                c.removeClass("ng-hide");
+            });
+            b.$on("$destroy", d);
+        }
+    };
+} ]);
 
 app.factory("posts", [ "$http", function(a) {
     var b = {
@@ -206,6 +249,30 @@ app.factory("instagram", [ "$http", function(a) {
             });
         }
     };
+} ]);
+
+app.run([ "$rootScope", "$location", "$route", "$timeout", function(a, b, c, d) {
+    a.config = {};
+    a.config.app_url = b.url();
+    a.config.app_path = b.path();
+    a.layout = {};
+    a.layout.loading = false;
+    a.$on("$routeChangeStart", function() {
+        console.log("$routeChangeStart");
+        d(function() {
+            a.layout.loading = true;
+        });
+    });
+    a.$on("$routeChangeSuccess", function() {
+        console.log("$routeChangeSuccess");
+        d(function() {
+            a.layout.loading = false;
+        }, 200);
+    });
+    a.$on("$routeChangeError", function() {
+        alert("wtff");
+        a.layout.loading = false;
+    });
 } ]);
 
 app.config([ "$stateProvider", "$urlRouterProvider", function(a, b) {

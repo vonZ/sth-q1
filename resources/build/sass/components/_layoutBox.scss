@@ -15,7 +15,7 @@
     /*width: 350px;*/
     /*width: 30%; */
     padding: 20px 0px;
-    margin: 30px 0px;
+    margin: 10px 0px;
     min-height: 250px;
     -webkit-transition: all 150ms linear;
     -o-transition: all 150ms linear;
@@ -45,7 +45,7 @@
 
             &:after {
                 content: " ";
-                border: solid 2px #3dc9b3;
+                border: solid 2px $orange;
                 display: block;
                 width: 55px;
                 margin: 15px auto;

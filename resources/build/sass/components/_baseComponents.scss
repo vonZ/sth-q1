@@ -13,3 +13,10 @@ hr {
 	width: 100%;
 	display: inline-block;
 }
+
+.transition {
+    @include fadeIn(2s); 
+  
+}
+
+

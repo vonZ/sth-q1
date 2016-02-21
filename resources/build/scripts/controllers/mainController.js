@@ -1,5 +1,5 @@
 //Controller
-app.controller('mainController', ['$scope','$http', '$state', '$rootScope' ,  function($scope, $http, $state, $rootScope){
+app.controller('mainController', ['$scope','$http', '$state', '$rootScope', '$window',  function($scope, $http, $state, $rootScope, $window){
 	console.log("Inne i mainCtrl");
 
 	$scope.getMenu = function () {
@@ -21,8 +21,23 @@ app.controller('mainController', ['$scope','$http', '$state', '$rootScope' ,  fu
 	$rootScope.$on('$stateChangeStart', 
 	function(event, toState, toParams, fromState, fromParams){ 
 	    console.log("State change"); 
-	    $scope.isRespMenuOpen = false; 
+	    $scope.isRespMenuOpen = false;  
 	}); 
+
+	$scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+    if (toState.resolve) {
+
+    	console.log("loading");
+        loading = true; 
+    }
+	});
+	$scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+	    if (toState.resolve) {
+    		console.log("not loading");
+        	loading = false; 
+	    }
+	});
+
 
 
 
