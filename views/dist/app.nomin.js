@@ -1,4 +1,4 @@
-/*! angular-grunt-foundation 2016-02-21 */
+/*! angular-grunt-foundation 2016-02-22 */
 var app = angular.module("sthlmHar", [ "ui.router", "google-maps", "ngRoute" ]);
 
 app.controller("aboutUsPageController", [ "$scope", "$http", function(a, b) {
@@ -14,9 +14,6 @@ app.controller("findUsPageController", [ "$scope", "$http", "$document", "Map", 
         lat: 59.3313821,
         "long": 18.0282956
     } ];
-    angular.element(document).ready(function() {
-        a.overviewMap(a.places);
-    });
     a.overviewMap = function(b) {
         console.log("overviewMap");
         f.Map = initOverviewMap();
@@ -54,7 +51,7 @@ app.controller("mainController", [ "$scope", "$http", "$state", "$rootScope", "$
     a.getMenu = function() {
         b.get("navData.json").success(function(b) {
             a.menuItems = b;
-            console.log("$scope.getMenu: ", a.items);
+            console.log("$scope.getMenu: ", a.menuItems);
         });
     };
     a.getMenu();
@@ -68,6 +65,17 @@ app.controller("mainController", [ "$scope", "$http", "$state", "$rootScope", "$
         console.log("State change");
         a.isRespMenuOpen = false;
     });
+} ]);
+
+app.controller("pricesPageController", [ "$scope", "$http", function(a, b) {
+    console.log("Inne i pricesPageController");
+    a.getPriceList = function() {
+        b.get("priceList.json").success(function(b) {
+            a.priceList = b;
+            console.log("$scope.priceList: ", a.priceList);
+        });
+    };
+    a.getPriceList();
 } ]);
 
 app.controller("startPageController", [ "$scope", "$http", "instagram", function(a, b, c) {
@@ -274,7 +282,7 @@ app.config([ "$stateProvider", "$urlRouterProvider", function(a, b) {
     }).state("prices", {
         url: "/priser",
         templateUrl: "partials/prices.html",
-        controller: "aboutUsPageController"
+        controller: "pricesPageController"
     });
 } ]);
 

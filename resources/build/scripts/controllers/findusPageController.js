@@ -12,9 +12,9 @@ app.controller('findUsPageController', ['$scope','$http', '$document', 'Map',  '
 	    }
 	];
 
-  	angular.element(document).ready(function () {
-		$scope.overviewMap($scope.places);
-    });
+  // 	angular.element(document).ready(function () {
+		// $scope.overviewMap($scope.places);
+  //   });
 
    	$scope.overviewMap = function(places) {
    		console.log("overviewMap");

@@ -25,7 +25,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     .state('prices', {
         url: '/priser',
         templateUrl: 'partials/prices.html',
-        controller: 'aboutUsPageController'
+        controller: 'pricesPageController'
     });
 
 }]);

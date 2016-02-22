@@ -1,0 +1,61 @@
+[
+	{
+	"activity": "Klippning",
+	"price": "250 kr",
+	"desc": "Klippningsbeskrivning"
+	},
+
+	{
+	"activity": "Färgning",
+	"price": "1250 kr",
+	"desc": "Desc"
+	},
+
+	{
+	"activity": "Klippning & färg",
+	"price": "1600 kr",
+	"desc": "Desc"
+	},
+	
+	{
+	"activity": "Keratinbehandling, Kebelo",
+	"price": "2500 kr",
+	"desc": "Desc"
+	},
+
+	{
+	"activity": "Tvätt & fön",
+	"price": "500 kr",
+	"desc": "Desc"
+	},
+
+	{
+	"activity": "Uppsättning",
+	"price": "650 kr",
+	"desc": "Desc"
+	},
+
+	{
+	"activity": "Bruduppsättning",
+	"price": "",
+	"desc": "Desc"
+	},
+
+	{
+	"activity": "Hårförlängning",
+	"price": "",
+	"desc": "Desc"
+	},
+
+	{
+	"activity": "Färg fransar & bryn + plock",
+	"price": "500 kr",
+	"desc": "Desc"
+	},
+
+	{
+	"activity": "Öronhåltagning",
+	"price": "200 kr",
+	"desc": "Desc"
+	}
+]

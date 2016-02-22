@@ -17,61 +17,25 @@
 	<div class="container">
 		<div class="wrapper">
 
-			<div class="col-md-6">
+			<div class="col-md-8">
+				<ul class="listOfServices heading noPadding">
+					<li class="col-md-8 noPadding">Aktivitet</li>
+					<li class="col-md-3 noPadding">Priser</li>
+				</ul>
+				<ul ng-click="isDescOpen = !isDescOpen" ng-repeat="item in priceList" class="listOfServices noPadding">
+					<li class="col-md-8 noPadding">{{item.activity}}</li>
+					<li ng-show="item.price" class="col-md-3 noPadding">{{item.price}}</li>
+					<li ng-show="!item.price" class="col-md-3 noPadding">Pris vid konsultation</li>
+					<li class="text-center col-md-1">
+						<i ng-class="!isDescOpen ? 'fa fa-plus' : isDescOpen ? 'fa fa-minus' : 'fa fa-minus'"></i>
+					</li>
 
-				<table class="table"> 
-					<thead> 
-						<tr class="active"> 
-							<th>Aktivitet</th> 
-							<th>Priser</th> 
-						</tr> 
-					</thead> 
-					<tbody> 
-						<tr> 
-							<td>Klippning</td> 
-							<td>fr. 250 kr</td> 
-						</tr> 
-						<tr> 
-							<td>Färgning</td> 
-							<td>fr. 1250 kr</td> 
-						</tr> 
-						<tr> 
-							<td>Klippning & färg</td> 
-							<td>fr. 1600kr</td> 
-						</tr> 
-						<tr> 
-							<td>Keratinbehandling, Kebelo</td> 
-							<td>fr. 2500 kr</td> 
-						</tr>
-						<tr> 
-							<td>Tvätt & fön</td> 
-							<td>fr. 500 kr</td> 
-						</tr> 
-						<tr> 
-							<td>Uppsättning</td> 
-							<td>fr. 650 kr</td> 
-						</tr> 
-						<tr> 
-							<td>Bruduppsättning</td> 
-							<td>pris vid konsultation</td> 
-						</tr> 
-						<tr> 
-							<td>Hårförlängning</td> 
-							<td>pris vid konsultation</td> 
-						</tr>  
-						<tr> 
-							<td>Färg fransar & bryn + plock</td> 
-							<td>500 kr</td> 
-						</tr> 
-						<tr> 
-							<td>Öronhåltagning</td> 
-							<td>200 kr</td> 
-						</tr>  
-					</tbody> 
-				</table>
-
+					<li class="desc" ng-init="isDescOpen = false" ng-show="isDescOpen">
+						<p>{{item.desc}}</p>
+					</li>
+				</ul>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<!-- <img src="img/kms.jpg" class="img-responsive" alt="" title=""> -->
 				<div class="pushBox info">
 					<h2>Visste du att?</h2>

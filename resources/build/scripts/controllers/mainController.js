@@ -5,7 +5,7 @@ app.controller('mainController', ['$scope','$http','$state', '$rootScope', '$win
 	$scope.getMenu = function () {
         $http.get('navData.json').success(function (result) {
             $scope.menuItems = result;
-            console.log("$scope.getMenu: ", $scope.items); 
+            console.log("$scope.getMenu: ", $scope.menuItems); 
         });
     };
 
