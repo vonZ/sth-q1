@@ -42,3 +42,13 @@ $(window).scroll(function() {
     }); 
 
 });
+
+
+$('#myModal').on('shown.bs.modal', function () {
+  $('header').removeClass("sticky"); 
+}); 
+
+
+$('#myModal').on('hide.bs.modal', function () {
+	$('header').addClass("sticky"); 
+}); 

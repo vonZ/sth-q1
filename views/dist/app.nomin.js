@@ -1,4 +1,4 @@
-/*! angular-grunt-foundation 2016-02-22 */
+/*! angular-grunt-foundation 2016-02-24 */
 var app = angular.module("sthlmHar", [ "ui.router", "google-maps", "ngRoute" ]);
 
 app.controller("aboutUsPageController", [ "$scope", "$http", function(a, b) {
@@ -46,7 +46,7 @@ app.controller("findUsPageController", [ "$scope", "$http", "$document", "Map", 
     };
 } ]);
 
-app.controller("mainController", [ "$scope", "$http", "$state", "$rootScope", "$window", function(a, b, c, d, e) {
+app.controller("mainController", [ "$scope", "$http", "$state", "$timeout", "$rootScope", "$window", function(a, b, c, d, e, f) {
     console.log("Inne i mainCtrl");
     a.getMenu = function() {
         b.get("navData.json").success(function(b) {
@@ -61,9 +61,12 @@ app.controller("mainController", [ "$scope", "$http", "$state", "$rootScope", "$
             return "currentPath";
         }
     };
-    d.$on("$stateChangeStart", function(b, c, d, e, f) {
-        console.log("State change");
+    e.$on("$stateChangeStart", function(b, c, e, f, g) {
+        a.isStateChange = true;
         a.isRespMenuOpen = false;
+        d(function() {
+            a.isStateChange = false;
+        }, 800);
     });
 } ]);
 
@@ -318,6 +321,14 @@ $(window).scroll(function() {
             }, 700);
         }
     });
+});
+
+$("#myModal").on("shown.bs.modal", function() {
+    $("header").removeClass("sticky");
+});
+
+$("#myModal").on("hide.bs.modal", function() {
+    $("header").addClass("sticky");
 });
 
 (function(a, b, c) {

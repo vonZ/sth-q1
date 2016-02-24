@@ -6,6 +6,9 @@ body {
     min-width: 320px;
 }
 
+main {
+    min-height: 800px;
+}
 
 table {
 
@@ -173,13 +176,13 @@ section {
 
     & img {
         width: 100%; 
-        @include fadeIn(2s); 
+        @include fadeIn(1s); 
     }
 }
 
 
 .wrapper {
-    display: inline-block;
+    display: block;
     width: 100%;
 }
 
@@ -212,9 +215,9 @@ section {
     border-radius: 10px;
     height: 220px;
 
-    &:hover {
+/*    &:hover {
         border: 2px solid rgba(0, 0, 0, 0.16);
-    }
+    }*/
 
     &#Wella {
         padding-top: 40px;
@@ -252,7 +255,11 @@ section {
 }
 
 .content {
-    padding: 30px 70px;
+    padding: 70px;
+
+    &#StartPage {
+        padding: 30px 70px; 
+    }
 }
 
 button {
@@ -303,6 +310,14 @@ button {
 
     .content {
         padding: 30px; 
+
+        &#StartPage {
+            padding: 30px; 
+        }
+
+        &#PricePage {
+            padding: 30px 0px; 
+        }
     }
 
     .topWrapper {
@@ -316,6 +331,12 @@ button {
     .welcomeContent {
         margin: 0px;
         padding: 0px; 
+    }
+
+    .pushBox {
+        &.info {
+            margin: 20px 0px;
+        }
     }
 
 }

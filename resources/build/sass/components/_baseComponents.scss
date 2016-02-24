@@ -4,7 +4,7 @@
 
 .noPadding {
 	padding: 0px; 
-}
+} 
 
 hr {
 	border: solid 1px #CECECE;
@@ -23,5 +23,46 @@ hr {
     height:500px;
     width: 100%; 
 }
+
+.spinner {
+	width: 50px;
+	height: 50px;
+	margin: 0 auto;
+	margin-top: 20px;
+	border: 3px solid $facebook;
+	border-radius: 50%;
+	border-top-color: transparent;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	box-shadow: 3px 3px 1px $facebook;
+	@include spin(0deg, 360deg, 600ms); 
+}
+
+
+.modalSpinner{
+	background: rgba(0,0,0,0.6);
+
+	&.light{
+		background: rgba(255,255,255,0.6);
+	}
+
+	&.full-window{
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		bottom: 0px;
+		right: 0px;
+		z-index: 100000;
+	}
+
+	.spinner{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -25px;
+		margin-left: -25px;
+	}
+}
+
 
 

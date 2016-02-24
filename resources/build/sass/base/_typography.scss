@@ -1,4 +1,4 @@
-h1, h2, h3, p, span, ul {
+h1, h2, h3, h4, p, span, ul {
     font-family: 'Open Sans', sans-serif;
     color: #646464; 
 }
@@ -27,6 +27,24 @@ i {
     &.fa-6x {
         font-size: 6em; 
     }
+
+   /* &.fa-facebook-square {
+        &:hover {
+            color: $facebook; 
+        }
+    }
+
+    &.fa-instagram {
+        &:hover {
+            color: $instagram; 
+        }
+    }
+
+    &.fa-phone-square {
+        &:hover {
+            color: $red; 
+        }
+    }*/
 
 }
 

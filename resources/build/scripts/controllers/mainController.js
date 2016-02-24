@@ -1,5 +1,5 @@
 //Controller
-app.controller('mainController', ['$scope','$http','$state', '$rootScope', '$window',  function($scope, $http, $state, $rootScope, $window){
+app.controller('mainController', ['$scope','$http','$state', '$timeout', '$rootScope', '$window',  function($scope, $http, $state, $timeout, $rootScope, $window){
 	console.log("Inne i mainCtrl");
 
 	$scope.getMenu = function () {
@@ -20,25 +20,13 @@ app.controller('mainController', ['$scope','$http','$state', '$rootScope', '$win
 
 	$rootScope.$on('$stateChangeStart', 
 	function(event, toState, toParams, fromState, fromParams){ 
-	    console.log("State change"); 
+	    $scope.isStateChange = true; 
 	    $scope.isRespMenuOpen = false;  
+
+    	$timeout(function() {
+	    	$scope.isStateChange = false; 
+    	}, 800);
+
 	}); 
-
-	// $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
- //    if (toState.resolve) {
-
- //    	console.log("loading");
- //        loading = true; 
- //    }
-	// });
-	// $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-	//     if (toState.resolve) {
- //    		console.log("not loading");
- //        	loading = false; 
-	//     }
-	// });
-
-
-
 
 }]);

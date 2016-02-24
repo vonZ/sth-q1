@@ -13,20 +13,20 @@
 <!-- <section class="content">
 	<h1>Nedan listas våra priser</h1>
 </section> -->
-<div class="content">
-	<div class="container">
+<div class="content" id="PricePage">
+	<div class="container noPadding">
 		<div class="wrapper">
 
-			<div class="col-md-8">
+			<div class="col-md-8 col-sm-8 col-xs-12">
 				<ul class="listOfServices heading noPadding">
-					<li class="col-md-8 noPadding">Aktivitet</li>
-					<li class="col-md-3 noPadding">Priser</li>
+					<li class="col-md-8 col-sm-8 col-xs-6 noPadding">Aktivitet</li>
+					<li class="col-md-3 col-sm-3 col-xs-6 noPadding">Priser</li>
 				</ul>
 				<ul ng-click="isDescOpen = !isDescOpen" ng-repeat="item in priceList" class="listOfServices noPadding">
-					<li class="col-md-8 noPadding">{{item.activity}}</li>
-					<li ng-show="item.price" class="col-md-3 noPadding">{{item.price}}</li>
-					<li ng-show="!item.price" class="col-md-3 noPadding">Pris vid konsultation</li>
-					<li class="text-center col-md-1">
+					<li class="col-md-8 col-sm-8 col-xs-6 noPadding">{{item.activity}}</li>
+					<li ng-show="item.price" class="col-md-3 col-sm-3 col-xs-5 noPadding">fr. {{item.price}}</li>
+					<li ng-show="!item.price" class="col-md-3 col-sm-3 col-xs-5 noPadding">Pris vid konsultation</li>
+					<li class="text-center col-md-1 col-sm-1 col-xs-1">
 						<i ng-class="!isDescOpen ? 'fa fa-plus' : isDescOpen ? 'fa fa-minus' : 'fa fa-minus'"></i>
 					</li>
 
@@ -35,7 +35,7 @@
 					</li>
 				</ul>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-4 col-sm-4 col-xs-12">
 				<!-- <img src="img/kms.jpg" class="img-responsive" alt="" title=""> -->
 				<div class="pushBox info">
 					<h2>Visste du att?</h2>
@@ -43,4 +43,10 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+
+
+<div class="modalSpinner full-window light" ng-if="isStateChange">
+    <div class="spinner"></div>
 </div>

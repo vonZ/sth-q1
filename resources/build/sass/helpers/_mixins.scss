@@ -108,3 +108,21 @@
   }
 
 }
+
+@mixin spin($rotateFrom, $rotateTo, $seconds){
+  -webkit-animation: spin $seconds infinite linear;
+  animation: spin $seconds infinite linear;
+
+  @-moz-keyframes spin {
+      from { -moz-transform: rotate($rotateFrom); }
+      to { -moz-transform: rotate($rotateTo); }
+  }
+  @-webkit-keyframes spin {
+      from { -webkit-transform: rotate($rotateFrom); }
+      to { -webkit-transform: rotate($rotateTo); }
+  }
+  @keyframes spin {
+      from {transform:rotate($rotateFrom);}
+      to {transform:rotate($rotateTo);}
+  }
+}
