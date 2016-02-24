@@ -339,6 +339,13 @@ button {
         }
     }
 
+    ul {
+        &.listOfServices {
+            & li {
+                padding: 20px 10px; 
+            }
+        }
+    }
 }
 
  
